@@ -1,0 +1,52 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 18px;
+    line-height: 1.2em;
+    font-family: 'Lucida Sans', 'Lucida Console', sans-serif;
+    margin: 1em auto;
+    max-width: 40em;
+   }
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 40px;
+}
+
+.header img.rabbit {
+    width: 50px; 
+    height: auto;
+}
+
+img.computer {
+    width: 150px; 
+    height: auto;
+}
+
+h1 {
+    color: #000000;
+    font-family: 'Lucida Console', monospace;
+    font-size: 40px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+   }
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+.footer-links {
+    margin-top: 20px;
+}
+
+A:link { color: #0008ff; }
+A:visited { color: #999999; }
+A:active { color: #ffffff; }
+
