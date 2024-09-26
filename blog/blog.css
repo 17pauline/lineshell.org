@@ -1,11 +1,13 @@
-body {
+html, body, p, li {
     background-color: #ffffff;
     color: #000000;
     font-size: 18px;
     line-height: 1.5em;
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    margin: 1em auto;
-    max-width: 40em;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	letter-spacing: normal;
    }
 
 .header {
@@ -14,6 +16,24 @@ body {
     align-items: center;
     gap: 15px; 
     margin-bottom: 10px;
+}
+
+body {
+	width: 75%;
+	margin: 25px auto;
+	max-width: 48em;
+}
+
+p {
+	line-height: 1.555em;
+	text-align: justify;
+	margin: 0.754em 0 0.754em 0;
+	padding: 0 0 0 0;
+}
+
+li {
+	text-align: justify;
+	padding: 0 0 0 0;
 }
 
 .header img.frog {
@@ -54,6 +74,11 @@ h3 {
 small {
     font-size: 16px;
     font-family: Monaco, monospace;
+}
+
+div.centerbox {
+	text-align: center;
+	padding: 0 0.4em;
 }
 
 mscode {

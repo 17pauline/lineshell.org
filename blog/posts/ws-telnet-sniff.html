@@ -46,14 +46,14 @@
             There is no central configuration to create an internal network, it is just identified by name. Once there is more than one active virtual network card with the same network ID, the VirtualBox support driver implements a complete Ethernet switch, supporting broadcast/multicast frames and promiscuous mode (which allows the VM to connect to the physical network and receive network packets).
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/intnet.png" alt="intnet" >
+            <img src="../images/ws-telnet-sniff/intnet.png" alt="intnet" style="max-width:100%;height:auto;">
         </div>
         <p>
             Once ensured both machines can connect to <mscode>intnet</mscode>, we can manually assign them an IPv4 address and subnet mask. 
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/ubuntu-ip.png" alt="Assigning IPv4 to Ubuntu machine" width="700">
-            <img src="../images/ws-telnet-sniff/win-ip.png" alt="Assigning IPv4 to Windows machine" width="700">
+            <img src="../images/ws-telnet-sniff/ubuntu-ip.png" alt="Assigning IPv4 to Ubuntu machine" style="max-width:100%;height:auto;">
+            <img src="../images/ws-telnet-sniff/win-ip.png" alt="Assigning IPv4 to Windows machine" style="max-width:100%;height:auto;">
         </div>
         <p>
             To verify that the VMs are able to reach eachother, we can make them ping one another.
@@ -65,8 +65,8 @@
             <em>Note #2: </em> I disabled Windows Firewall on my Windows 10 VM, otherwise my Ubuntu VM would not be able to transmit any packets to it.
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/ubuntu-ping.png" alt="Ubuntu machine pings Windows machine successfully" width="700">
-            <img src="../images/ws-telnet-sniff/win-ping.png" alt="Windows machine pings Ubuntu machine successfully" width="700">
+            <img src="../images/ws-telnet-sniff/ubuntu-ping.png" alt="Ubuntu machine pings Windows machine successfully" style="max-width:100%;height:auto;">
+            <img src="../images/ws-telnet-sniff/win-ping.png" alt="Windows machine pings Ubuntu machine successfully" style="max-width:100%;height:auto;">
         </div>
         <p>
             In order to proceed with the experiment, I downloaded <a href="https://www.putty.org/">PuTTY</a> and <a href="https://www.wireshark.org/">Wireshark</a> on the Windows VM. 
@@ -86,19 +86,19 @@
             Finally, it was time to use PuTTY to gain remote access to the Ubuntu machine via telnet.
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/putty-telnet.png" alt="Remote access to the Ubuntu machine via Telnet" width="700">
+            <img src="../images/ws-telnet-sniff/putty-telnet.png" alt="Remote access to the Ubuntu machine via Telnet" style="max-width:100%;height:auto;">
         </div>
         <p>
             I logged in using the credentials of the Ubuntu account - the username <em>linuxline</em> and the password <em>qwerty</em>.
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/putty-login.png" alt="Logging in via telnet" width="700">
+            <img src="../images/ws-telnet-sniff/putty-login.png" alt="Logging in via telnet" style="max-width:100%;height:auto;">
         </div>
         <p>
             I had started capturing traffic on Ethernet 2, the interface corresponding to the internal network we have previously set up. Next, I applied the filter <mscode>tcp.stream eq 0</mscode>, and followed the TCP stream to see the packets being transmitted between the two IP addresses.
         </p>
         <div style="text-align: center;">
-            <img src="../images/ws-telnet-sniff/cleartext.png" alt="Packet sniffed - the password is shown in cleartext" width="700">
+            <img src="../images/ws-telnet-sniff/cleartext.png" alt="Packet sniffed - the password is shown in cleartext" style="max-width:100%;height:auto;">
         </div>
         <p>
             We can see the <em>entire</em> conversation in ASCII. And sure enough, there is the password in <em>cleartext</em>!
