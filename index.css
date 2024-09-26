@@ -1,7 +1,7 @@
 body {
     background-color: #ffffff;
     color: #000000;
-    font-size: 13pt;
+    font-size: 18px;
     line-height: 1.5em;
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     margin: 1em auto;
@@ -10,15 +10,22 @@ body {
 
 .header {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     gap: 15px; 
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .header img.rabbit {
     width: 50px; 
     height: auto;
+}
+
+p {
+	line-height: 1.555em;
+	text-align: justify;
+	margin: 0.754em 0 0.754em 0;
+	padding: 0 0 0 0;
 }
 
 img.computer {
