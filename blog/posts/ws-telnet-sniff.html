@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Proof of Concept: Using Wireshark to demonstrate Telnet's vulnerability</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../images/whiterabbit.gif" type="image/gif">
+        <link rel="stylesheet" type="text/css" href="../blog.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>cyberblog</h1>
+            <img src="../../images/comfrog.gif" alt="Computer Frog" class="frog">
+        </div>
+    
+        <b>Studies, experiments, thoughts, and maybe other things</b>
+    
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+        <hr width="100%" size=1 align="center" noshade>
+    
+        <h2>Proof of Concept: Using Wireshark to demonstrate Telnet's vulnerability</h2>
+        <small>23rd of September, 2024</small>
+        <p>
+            Telnet is a client-server protocol used to establish a connection to TCP port 23, allowing remote communciation between computers. It's been used since 1969, and for a long time, it stood as the default way to access remote networked computers. But, as the years pass, technology becomes deprecated, and needs to be replaced. 
+        </p>
+        <p>
+            The issue is that, by default, Telnet does not encrypt any data sent over the connection (not even passwords), so it is vulnerable to eavesdropping. Since Telnet is at risk from network-based cyberattacks, such as packet sniffing sensistive information, it is often targeted by attackers, compromising privacy.
+        </p>
+        <h3>Packet sniffing over Telnet using Wireshark</h3>
+        <p>
+            I wanted to play around with two virtual machines, so I used them in this simple experiment. First things first, I prepared the VMs in <a href="https://www.virtualbox.org/">VirtualBox</a>, installing Windows 10 Enterprise on one of them, and Ubuntu 22.04 on the other.</p>
+        <p>
+            In order to simulate a private communication between the two machines, I attached the VM's network cards to an internal network (<mscode>intnet</mscode>). Normally, VirtualBox uses a device driver on your host system that filters data from your physical network adapter. This is called bridged networking, and it's used so that the VM can directly communicate with the outside world. But with internal networking, that <em>outside world</em> is limited to other VMs on the same host which connect to the same internal network.
+        </p>
+        <p>
+            Technically, anything that can be done using internal networking, can also be achieved using bridged networking, but there are security advantages to internal networking. Since in bridged networking mode, traffic and log data flow through the physical interface of the host system, you can attach a packet sniffer to the host interface and log all traffic that goes over it. So we use internal networking to ensure that two VMs on the same machine communicate privately, hiding their data from the host system and the user. 
+        </p>
+        <p>
+            There is no central configuration to create an internal network, it is just identified by name. Once there is more than one active virtual network card with the same network ID, the VirtualBox support driver implements a complete Ethernet switch, supporting broadcast/multicast frames and promiscuous mode (which allows the VM to connect to the physical network and receive network packets).
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/intnet.png" alt="intnet" >
+        </div>
+        <p>
+            Once ensured both machines can connect to <mscode>intnet</mscode>, we can manually assign them an IPv4 address and subnet mask. 
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/ubuntu-ip.png" alt="Assigning IPv4 to Ubuntu machine" width="700">
+            <img src="../images/ws-telnet-sniff/win-ip.png" alt="Assigning IPv4 to Windows machine" width="700">
+        </div>
+        <p>
+            To verify that the VMs are able to reach eachother, we can make them ping one another.
+        </p>
+        <p>
+            <em>Note #1: </em>On Ubuntu, I had to run <mscode>su -</mscode> to escalate privileges and further run <mscode>sudo apt install net-tools</mscode> in order to use <mscode>ping</mscode> and <mscode>ifconfig</mscode>. 
+        </p>
+        <p>
+            <em>Note #2: </em> I disabled Windows Firewall on my Windows 10 VM, otherwise my Ubuntu VM would not be able to transmit any packets to it.
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/ubuntu-ping.png" alt="Ubuntu machine pings Windows machine successfully" width="700">
+            <img src="../images/ws-telnet-sniff/win-ping.png" alt="Windows machine pings Ubuntu machine successfully" width="700">
+        </div>
+        <p>
+            In order to proceed with the experiment, I downloaded <a href="https://www.putty.org/">PuTTY</a> and <a href="https://www.wireshark.org/">Wireshark</a> on the Windows VM. 
+            <ul>
+                <li>
+                    PuTTY is an open-source terminal emulator, and we are using it as a Telnet client, though it supports several network protocols, including FTP, SSH, Telnet, SCP, rlogin, and raw socket connection.
+                </li>
+                <li>
+                    Wireshark is an open-source packet analyzer, and we are using it to analyse communications between the two VMs.
+                </li>
+            </ul>
+        </p>
+        <p>
+            I also checked that I had <u>Telnet</u> on the Ubuntu machine by running <mscode>sudo dpkg -l | grep telnet</mscode> (although, a telnet client should come standard with Ubuntu).
+        </p>
+        <p>
+            Finally, it was time to use PuTTY to gain remote access to the Ubuntu machine via telnet.
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/putty-telnet.png" alt="Remote access to the Ubuntu machine via Telnet" width="700">
+        </div>
+        <p>
+            I logged in using the credentials of the Ubuntu account - the username <em>linuxline</em> and the password <em>qwerty</em>.
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/putty-login.png" alt="Logging in via telnet" width="700">
+        </div>
+        <p>
+            I had started capturing traffic on Ethernet 2, the interface corresponding to the internal network we have previously set up. Next, I applied the filter <mscode>tcp.stream eq 0</mscode>, and followed the TCP stream to see the packets being transmitted between the two IP addresses.
+        </p>
+        <div style="text-align: center;">
+            <img src="../images/ws-telnet-sniff/cleartext.png" alt="Packet sniffed - the password is shown in cleartext" width="700">
+        </div>
+        <p>
+            We can see the <em>entire</em> conversation in ASCII. And sure enough, there is the password in <em>cleartext</em>!
+        </p>
+
+        <h3>SSH - Telnet's alternative</h3>
+        <p>
+            SSH (Secure Shell Protocol) is a cryptographic network protocol that was designed for Unix-like operating systems in order to replace Telnet and other unsecured remote Unix shell protocols, such as rsh (Berkeley Remote Shell). Its first version was released in 1995, and since then, it occupies port 22 (between 21 (FTP) and 23 (Telnet)). 
+        </p>
+        <p>
+            Much like Telnet, SSH applications are based on a client-server architecture. But unlike the former, SSH uses public-key cryptography to authenticate the remote computer and allow it to authenticate the user. In simple terms, it makes its connection using that key, which is obtained when you make a certificate. You distribute the keys to whoever is allowed in the conversation, creating an encrypted channel.
+        </p>
+        <h3>Conclusion</h3>
+        <p>
+            In the end, we close or filter ports that aren't necessary, or that expose our system. Therefore, it is recommended that port 23 be closed - disabling Telnet tightens and protects our system security.
+        </p>
+    
+        <hr width="100%" size=1 align="center" noshade>
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+    </body>
+</html>

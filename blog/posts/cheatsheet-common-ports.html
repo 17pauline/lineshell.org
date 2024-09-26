@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Common Ports Cheatsheet</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../images/whiterabbit.gif" type="image/gif">
+        <link rel="stylesheet" type="text/css" href="../blog.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>cyberblog</h1>
+            <img src="../../images/comfrog.gif" alt="Computer Frog" class="frog">
+        </div>
+    
+        <b>Studies, experiments, thoughts, and maybe other things</b>
+    
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+        <hr width="100%" size=1 align="center" noshade>
+    
+        <h2>Common Ports Cheatsheet</h2>
+        <small>24th of September, 2024</small>
+
+        <p>
+            A port is a virtual point where network connections start and end. TCP and UDP protocols make the connections, recompile data packages after the transfer, and then deliver them to applications on the recipient's device, and, for that handover to work, the OS must install and open the gateway for the transfer.
+        </p>
+        <p>
+            Ports are 16-bit numerical values raning from 0 to 65535.
+            <ul>
+                <li>0 - 1023: non-ephemeral ports</li>
+                <li>1024 - 65535: ephemeral ports
+                    <ul>
+                        <li>1024 - 49151: registered ports</li>
+                        <li>49152 - 65535: dynamic ports</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>Fundamentally, a port is a logical form to identify system activities or various network services used to create local or network-based communications. Here is a cheatsheet with essential ports: </p>
+
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Port number</th>
+                <th>Transport protocol</th>
+                <th>Summary</th>
+            </tr>
+            <tr>
+                <td>Echo</td>
+                <td>7</td>
+                <td>TCP, UDP</td>
+                <td>Testing reachability, debugging software, identifying routing issues</td>
+            </tr>
+            <tr>
+                <td>FTP</td>
+                <td>20</td>
+                <td>TCP</td>
+                <td>File Transfer Protocol - data transfer</td>
+            </tr>
+            <tr>
+                <td>FTP</td>
+                <td>21</td>
+                <td>TCP, UDP</td>
+                <td>File Transfer Protocol - establish a session/control connection</td>
+            </tr>
+            <tr>
+                <td><greentext>SSH/SCP</greentext></td>
+                <td>22</td>
+                <td>TCP</td>
+                <td>Secure Shell - remote terminal communication; secure logins; secure file transfers (SCP)</td>
+            </tr>
+            <tr>
+                <td>Telnet</td>
+                <td>23</td>
+                <td>TCP</td>
+                <td>Remote console access; in the clear</td>
+            </tr>
+            <tr>
+                <td>SMTP</td>
+                <td>25</td>
+                <td>TCP</td>
+                <td>Simple Mail Transfer Protocol - email routing between mail servers</td>
+            </tr>
+            <tr>
+                <td>DNS</td>
+                <td>53</td>
+                <td>TCP, UDP</td>
+                <td>Domain Name System - name to IP resolver; TCP used for very large data transfers</td>
+            </tr>
+            <tr>
+                <td>DHCP</td>
+                <td>67/68</td>
+                <td>UDP</td>
+                <td>Dynamic Host Configuration Protocol - dynamic IP address allocation</td>
+            </tr>
+            <tr>
+                <td>TFTP</td>
+                <td>69</td>
+                <td>UDP</td>
+                <td>Trivial File Transfer Protocol</td>
+            </tr>
+            <tr>
+                <td>HTTP</td>
+                <td>80</td>
+                <td>TCP, UDP</td>
+                <td>Hypertext Transfer Protocol - HTTP 1.x and 2 use TCP, while HTTP/3 uses QUIC, a transport protocol on top of UDP</td>
+            </tr>
+            <tr>
+                <td>Kerberos</td>
+                <td>88</td>
+                <td>TCP, UDP</td>
+                <td>Network authentication system</td>
+            </tr>
+            <tr>
+                <td>POP3</td>
+                <td>110</td>
+                <td>TCP</td>
+                <td>Post Office Protocol, version3</td>
+            </tr>
+            <tr>
+                <td>NTP</td>
+                <td>123</td>
+                <td>UDP</td>
+                <td>Network Time Protocol - configure and synchronize time across devices</td>
+            </tr>
+            <tr>
+                <td>NetBIOS</td>
+                <td>137/139</td>
+                <td>TCP, UDP</td>
+                <td>NetBIOS Name Service - used for name registration and resolution; NetBIOS Session Service</td>
+            </tr>
+            <tr>
+                <td>IMAP4</td>
+                <td>143</td>
+                <td>TCP, UDP</td>
+                <td>Internet Message Access Protocol - management of electronic mail messages on a server</td>
+            </tr>
+            <tr>
+                <td>SNMP</td>
+                <td>161/162</td>
+                <td>UDP</td>
+                <td>Simple Network Management Protocol - 162 used for SNMP trap</td>
+            </tr>
+            <tr>
+                <td>LDAP</td>
+                <td>389</td>
+                <td>TCP</td>
+                <td>Lightweight Directory Access Protocol - centralized database</td>
+            </tr>
+            <tr>
+                <td><greentext>HTTPS</greentext></td>
+                <td>443</td>
+                <td>TCP, UDP</td>
+                <td>Hypertext Transfer Protocol Secure over TSL/SSL</td>
+            </tr>
+            <tr>
+                <td>SMB (CIFS)</td>
+                <td>445</td>
+                <td>TCP</td>
+                <td>Server Message Block (Common Internet File System) - similar to FTP, but also allows you to share devices like printers</td>
+            </tr>
+            <tr>
+                <td>Kerberos </td>
+                <td>464</td>
+                <td>TCP, UDP</td>
+                <td>Kerberos Change/Set password</td>
+            </tr>
+            <tr>
+                <td><greentext>SMTP over SSL</greentext></td>
+                <td>465</td>
+                <td>TCP</td>
+                <td>Simple Mail Transfer Protocol encrypted over SSL</td>
+            </tr>
+            <tr>
+                <td>Syslog</td>
+                <td>514</td>
+                <td>UDP</td>
+                <td>Devices send logs to a central repository, like a SIEM</td>
+            </tr>
+            <tr>
+                <td><greentext>SMTP over TLS</greentext></td>
+                <td>587</td>
+                <td>TCP</td>
+                <td>Simple Mail Transfer Protocol encrypted over TLS</td>
+            </tr>
+            <tr>
+                <td>LDAPS</td>
+                <td>636</td>
+                <td>TCP, UDP</td>
+                <td>Lightweight Directory Access Protocol over TLS/SSL</td>
+            </tr>
+            <tr>
+                <td><greentext>FTPS</greentext></td>
+                <td>989</td>
+                <td>TCP, UDP</td>
+                <td>FTPS Protocol (data), FTP over TLS/SSL</td>
+            </tr>
+            <tr>
+                <td><greentext>FTPS</greentext></td>
+                <td>990</td>
+                <td>TCP, UDP</td>
+                <td> FTPS Protocol (control), FTP over TLS/SSL</td>
+            </tr>
+            <tr>
+                <td><greentext>IMAP4 over SSL/TLS</greentext></td>
+                <td>993</td>
+                <td>TCP</td>
+                <td>Internet Message Access Protocol over TLS/SSL (IMAPS)</td>
+            </tr>
+            <tr>
+                <td><greentext>POP3 over SSL/TLS</greentext></td>
+                <td>995</td>
+                <td>TCP, UDP</td>
+                <td>Post Office Protocol 3 over TLS/SSL</td>
+            </tr>
+            <tr>
+                <td>OpenVPN</td>
+                <td>1194</td>
+                <td>TCP, UDP</td>
+                <td>OpenVPN</td>
+            </tr>
+            <tr>
+                <td>Microsoft SQL Server</td>
+                <td>1433/1434</td>
+                <td>TCP</td>
+                <td>Microsoft SQL Server database system</td>
+            </tr>
+            <tr>
+                <td>Oracle SQL Net</td>
+                <td>1521</td>
+                <td>TCP</td>
+                <td>Protocol used by Oracle SQL servers to execute SQL commands from clients</td>
+            </tr>
+            <tr>
+                <td>Oracle DB</td>
+                <td>2483</td>
+                <td>TCP, UDP</td>
+                <td>Oracle database listening for insecure client connections to the listener, replaces port 1521</td>
+            </tr>
+            <tr>
+                <td><greentext>Oracle DB</greentext></td>
+                <td>2484</td>
+                <td>TCP, UDP</td>
+                <td>Oracle database listening for SSL client connections to the listener</td>
+            </tr>
+            <tr>
+                <td>MySQL</td>
+                <td>3306</td>
+                <td>TCP</td>
+                <td>MySQL database management system</td>
+            </tr>
+            <tr>
+                <td>RDP</td>
+                <td>3389</td>
+                <td>TCP</td>
+                <td>Remote Desktop Protocol - remote shared desktop view</td>
+            </tr>
+            <tr>
+                <td>SIP</td>
+                <td>5060/5061</td>
+                <td>TCP</td>
+                <td>Session Initiation Protocol - set up, tear down, set parameters for phone call; VoIP</td>
+            </tr>
+            <tr>
+                <td>PostgreSQL</td>
+                <td>5432</td>
+                <td>TCP</td>
+                <td>PostgreSQL database system</td>
+            </tr>
+            <tr>
+                <td>IRC</td>
+                <td>6665/6669</td>
+                <td>TCP</td>
+                <td>Internet Relay Chat</td>
+            </tr>
+        </table>
+
+        <hr width="100%" size=1 align="center" noshade>
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+    </body>
+</html>

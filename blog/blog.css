@@ -2,8 +2,8 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-size: 18px;
-    line-height: 1.2em;
-    font-family: 'Lucida Sans', 'Lucida Console', sans-serif;
+    line-height: 1.5em;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
     margin: 1em auto;
     max-width: 40em;
    }
@@ -13,7 +13,7 @@ body {
     justify-content: left;
     align-items: center;
     gap: 15px; 
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .header img.frog {
@@ -23,13 +23,73 @@ body {
 
 h1 {
     color: #000000;
-    font-family: 'Lucida Console', monospace;
-    font-size: 40px;
+    font-family: Monaco, monospace;
+    font-size: 35px;
     line-height: 24px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
    }
+
+h2 {
+    color: #000000;
+    font-family: Monaco, monospace;
+    font-size: 28px;
+    line-height: 28px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #000000;
+    font-family: Monaco, monospace;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+small {
+    font-size: 16px;
+    font-family: Monaco, monospace;
+}
+
+mscode {
+    font-size: 18px;
+    font-family: Monaco, monospace;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 2px;
+	-moz-box-shadow: 1px 1px 2px #AAA;  
+	-webkit-box-shadow: 1px 1px 2px #AAA;  
+	box-shadow: 1px 1px 1.5px #AAA;
+	white-space:pre; 
+}
+
+code {
+    font-size: 18px;
+    font-family: Monaco, monospace;
+    background-color: #000000;
+    color: #ffffff;
+
+    text-align: left;
+    min-width: 80%;
+	max-width: 100%;
+	overflow: auto;
+	box-sizing: border-box;
+	display: inline-block;
+
+	margin-left: 0;
+	margin-right: 0;
+	margin-bottom: 2em;
+	padding: 1em;
+	-moz-box-shadow: 4px 4px 10px #AAA;  
+	-webkit-box-shadow: 4px 4px 10px #AAA;  
+	box-shadow: 4px 4px 6px #AAA;
+	white-space:pre; 
+}
 
 .container {
     max-width: 800px;
@@ -37,11 +97,39 @@ h1 {
     padding: 10px;
 }
 
-.footer-links {
-    margin-top: 20px;
+redtext {
+    color: #ff0000;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
 }
 
-A:link { color: #0008ff; }
+greentext {
+    color: #00e000;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+.footer-links {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+A:link { color: #0000ff; }
 A:visited { color: #999999; }
 A:active { color: #ffffff; }
+A:hover { color: #00e000}
 
+table {
+    width: 100%;
+}
+
+tr, td {
+    padding: 4px;
+}
+
+th {
+    padding: 4px;
+    color: #0000ff;
+}
