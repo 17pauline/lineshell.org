@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Dual Booting macOS & Ubuntu on your Mac</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../images/whiterabbit.gif" type="image/gif">
+        <link rel="stylesheet" type="text/css" href="../blog.css">
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>cyberblog</h1>
+            <img src="../../images/comfrog.gif" alt="Computer Frog" class="frog">
+        </div>
+    
+        <b>Studies, experiments, thoughts, and maybe other things</b>
+    
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+        <hr width="100%" size=1 align="center" noshade>
+    
+        <h2>Dual Booting macOS & Ubuntu on your Mac</h2>
+        <small>1st of October, 2024</small>
+        <p>
+            Do you have an older Macbook lying around somewhere? Well, I did. My Macbook Pro Late 2013 was catching dust in a drawer - last time I'd used it was in high school. I'd already purchased it second hand, and it was never in the best shape, having a scratched screen and exterior, and, besides all that, it only has 4 GB of RAM, making it pretty pointless for most of my work. 
+        </p>
+        <p>
+            But I still love it, and, even if I could, I wouldn't want to get rid of it. I am nostalgic about old tech that way, and I like the idea of repurposing it. This laptop still has an amazing display, unlike any other laptop I've had since, and, overall, it is a solid piece of hardware. I decided I had a new objective for it - I want it to dual boot macOS and Linux. 
+        </p>
+        <p>
+            Turns out Linux is excellent for old Macbooks, easy to install and very convenient. Here are some pros to consider:
+            <ul>
+                <li>Your Mac can run considerably quicker, since Linux requires much less RAM to function</li>
+                <li>Your OS can be up-to-date, regardless of how old your hardware is</li>
+                <li>You don't have to worry about installing drivers or other software most of the time, especially if you're going for a minimalist setup</li>
+                <li>Linux is free</li>
+                <li>You can breathe life into your old and seemingly useless computer</li>
+            </ul>  
+        </p>
+        <p>
+            My Macbook's specifications:
+            <ul>
+                <li>Model: Macbook Pro Late 2013</li>
+                <li>Processor: 2,4 GHz Dual Core Intel Core i5</li>
+                <li>Memory: 4 GB of 1600 MHz DDR3L onboard memory</li>
+                <li>Storage: 128 GB</li>
+                <li>Graphics: Intel Iris 1536 MB</li>
+                <li>last running macOS update: Catalina 10.15.7 (unable to update further)</li>
+            </ul>
+        </p>
+        <p>Let's get into it.</p>
+
+        <h3>1. Downloading Ubuntu/Linux</h3>
+        <p>
+            For now, I went with Ubuntu as my Linux distribution of choice. However, I might consider switching to Debian or Arch in the future, as they are more lightweight and use less RAM. I might also look into upgrading my mechanical drive to an SSD and taking my RAM up a notch - consider yourself lucky if you have at least 8 GB!
+        </p>
+        <p>
+            So, if you're following this tutorial, go ahead and download an LTS version of <a href="https://ubuntu.com/download/desktop">Ubuntu</a> on your Mac.
+        </p>
+
+        <h3>2. Creating disk space for a Linux partition</h3>
+        <p>
+            In your terminal, you can run <mscode>diskutil list</mscode> to take note of your current disk partition. 
+        </p>
+        <div style="text-align: center;"></div>
+            <img src="../images/ubuntu-on-mac/disk-distribution.png" alt="Macbook disk distribution" style="max-width:100%;height:auto;">
+        </div>
+        <p>
+            Open Disk Utility and click on the main device - that's the APPLE SSD corresponding with the physical disk. Click <b>Partition</b>. 
+        </p>
+        <div style="text-align: center;"></div>
+            <img src="../images/ubuntu-on-mac/disk-utility.png" alt="Disk utility" style="max-width:100%;height:auto;">
+        </div>
+        <p>
+            You can see the main container disk taking up all the storage. Click on the plus sign <b>(+)</b> to add a partition.
+        </p>
+        <div style="text-align: center;"></div>
+            <img src="../images/ubuntu-on-mac/initial-partition.png" alt="Initial partition" style="max-width:100%;height:auto;">
+        </div>
+        <p>
+            Choose the size, name, and make sure to input <b>MS-DOS (FAT)</b> format for your Linux partition.
+        </p>
+        <div style="text-align: center;"></div>
+            <img src="../images/ubuntu-on-mac/partitioned.png" alt="Linux partition" style="max-width:100%;height:auto;">
+        </div>
+        <p>
+            Now be patient and do not interrupt while disk resizing is occurring! It may take a couple minutes. If the operation is successful, you can proceed to the next step.
+        </p>
+
+        <h3>3. Downloading & installing your flash tool - <a href="https://etcher.balena.io/">balenaEtcher</a></h3>
+        <p>
+            <a href="https://etcher.balena.io/">BalenaEtcher</a> is an open source utility that writes image files onto storage media, allowing us to create the bootable USB drive we'll use to flash Ubuntu on our Mac. 
+        </p>
+        <p>
+            Download and install it, and, when you are done, plug in your USB flash drive or any drive of your choice (but make sure it has at least 8 GB of free space). Select the <b>.iso</b> Ubuntu image file you've downloaded at Step 1. And Flash!
+        </p>
+        <div style="text-align: center;"></div>
+            <img src="../images/ubuntu-on-mac/balena-etcher.png" alt="Flashing ubuntu on USB drive" style="max-width:100%;height:auto;">
+        </div>
+        <p>
+            This process may take a while - it took me 15 minutes. Once again, wait and do not close your laptop or disrupt this procedure.
+        </p>
+
+        <h3>4. Installing Ubuntu</h3>
+        <p>
+            Now that you've flashed Ubuntu on your USB drive, you can safely restart your laptop, while holding the <b>alt/option key</b>. 
+        </p>
+        <p>
+            <em>Note: </em> Do not take out your USB drive until the very end of the Ubuntu installation, when you will be prompted to do so.
+        </p>
+        <p>
+            Once you have restarted your laptop as mentioned above, you will be able to choose which partition to boot. The Mac should present an orange partition on the screen, titled <b>EFI Boot</b> - select that one, and, when prompted, choose <b>Try and Install Ubuntu</b>.
+        </p>
+        <p>
+            The installation may differ based on the version of Ubuntu you've chosen, but following a standard installation shouldn't be too hard.
+            <ul>
+                <li>
+                    Make sure to click <b>Install third party software for graphics and WiFi hardware</b>.
+                </li>
+            </ul>
+        </p>
+        <p>
+            When you're given a choice, choose <b>Manual partitioning</b> (or Manual installation). This will allow you to configure your own disk partition for your Linux distribution.
+        </p>
+        <p>
+            Although disks aren't named as they were back in your Mac's Disk Utility, you can tell which ones are which - you should be interested in a <b>fat32 (VFAT)</b> disk corresponding with the size of the Linux partition you've created during Step 2. Mine was called sda3, with approximately 60.5 GB available - once you've found yours, select it and click on <b>(-)</b> to free up that space. Essentially, we'll partition that Linux partition even further, to organize our space better.
+        </p>
+        <p>
+            By selecting the <b>free space</b> and clicking the plus sign <b>(+)</b>, you can create those new partitions. Here's my Ubuntu partitioning guide:
+        </p>
+        <table>
+            <tr>
+              <th>Partition type</th>
+                <th>Size</th>
+                <th>File System</th>
+                <th>Mount point</th>
+            </tr>
+            <tr>
+                <td>Swap</td>
+                <td>4 GB</td>
+                <td>swap</td>
+                <td>none</td>
+            </tr>
+            <tr>
+                <td>EFI</td>
+                <td>500 MB</td>
+                <td>VFAT</td>
+                <td><mscode>/boot/efi</mscode></td>
+            </tr>
+            <tr>
+                <td>Root</td>
+                <td>20 GB</td>
+                <td>Ext4</td>
+                <td><mscode>/</mscode></td>
+            </tr>
+            <tr>
+                <td>Home</td>
+                <td>36 GB</td>
+                <td>Ext4</td>
+                <td><mscode>/home</mscode></td>
+            </tr>
+        </table>
+
+        <p>
+            Each one of these partions has its purpose:
+            <ol>
+                <li><em>Swap</em> - acts as virtual memory, helping with system performance when physical RAM is full; it is recommended to be at least half of what your actual RAM is.</li>
+                <li><em>EFI</em> - stores the bootloader (GRUB) and boot information required to start Ubuntu (and macOS in dual boot).</li>
+                <li><em>Root</em> - contains the Ubuntu operating system files and system applications; it is the core directory for the OS.</li>
+                <li><em>Home</em> - stores personal files, user data (documents, music, videos, etc.), and settings.</li>
+            </ol>
+        </p>
+        <p>
+            Finally, ensure that the device for boot loader installation is your main disk, or, if you are able to choose, the EFI partition you've just created. Click <b>Next</b>, and wait for the installation to be concluded. Once it does, you will be asked to remove your USB drive, click Enter and Restart.
+        </p>
+
+        <h3>Conclusion</h3>
+        <p>
+            And <em>there</em> you have it. You've just resurrected your old Macbook. 
+        </p>
+        <p>
+            I hope you have fun with it - I'll be experimenting on mine for sure.
+        </p>
+        <img src="../images/ubuntu-on-mac/linux-loves-u.gif" alt="Linux loves you" >
+
+        <hr width="100%" size=1 align="center" noshade>
+        <div class="footer-links"></div>
+            <a href="../../index.html">home</a> | 
+            <a href="../index.html">blog</a> | 
+            <a href="https://www.linkedin.com/in/paulatantareanu">linkedin</a> | 
+            <a href="https://github.com/17pauline">github</a> | 
+            <a href="mailto:paulatantareanu@outlook.com">email</a>
+        </div>
+    </body>
+</html>
