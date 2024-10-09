@@ -2,8 +2,8 @@ html, body, p, li {
     background-color: #ffffff;
     color: #000000;
     font-size: 18px;
-    line-height: 1.5em;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 1.3em;
+    font-family: Times New Roman, serif;
 	font-weight: normal;
 	font-style: normal;
 	font-variant: normal;
@@ -25,7 +25,7 @@ body {
 }
 
 p {
-	line-height: 1.555em;
+	line-height: 1.3em;
 	text-align: justify;
 	margin: 0.754em 0 0.754em 0;
 	padding: 0 0 0 0;
@@ -72,7 +72,7 @@ h3 {
 }
 
 small {
-    font-size: 16px;
+    font-size: 14px;
     font-family: Monaco, monospace;
 }
 
@@ -82,7 +82,7 @@ div.centerbox {
 }
 
 mscode {
-    font-size: 18px;
+    font-size: 16px;
     font-family: Monaco, monospace;
     background-color: #ffffff;
     color: #000000;
@@ -94,7 +94,7 @@ mscode {
 }
 
 code {
-    font-size: 18px;
+    font-size: 16px;
     font-family: Monaco, monospace;
     background-color: #000000;
     color: #ffffff;
@@ -125,15 +125,15 @@ code {
 redtext {
     color: #ff0000;
     font-size: 18px;
-    line-height: 1.5em;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 1.3em;
+    font-family: Times New Roman, serif;
 }
 
 greentext {
     color: #00e000;
     font-size: 18px;
-    line-height: 1.5em;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 1.3em;
+    font-family: Times New Roman, serif;
 }
 
 .footer-links {
